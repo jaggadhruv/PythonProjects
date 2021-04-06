@@ -1,9 +1,36 @@
-def display_information(row1, row2, row3):
+from IPython.display import clear_output
 
+def display_board(board):
+    clear_output()
     print("Current GAME Status")
-    print(row1)
-    print(row2)
-    print(row3)
+    print(board[1] + "|" + board[2] + "|" + board[3])
+    print(board[4] + "|" + board[5] + "|" + board[6])
+    print(board[7] + "|" + board[8] + "|" + board[9])
+
+# ____________________________________________________________________
+
+def player_select_marker():
+
+    '''
+    output = (player1Marker, player2Marker)
+    '''
+
+    marker = ""
+    player1_marker = ""
+    player2_marker = ""
+
+    while marker != "x" and marker != "o":
+        marker = input("Player 1: Choose option 'x' or 'o' ")
+
+        if marker == "x":
+            player1_marker = "x"
+            player2_marker = "o"
+        else:
+            player1_marker = "o"
+            player2_marker = "x"
+
+    return (player1_marker, player2_marker)
+
 
 # ____________________________________________________________________
 
@@ -71,20 +98,22 @@ def gameON_choice():
 # ____________________________________________________________________
 # ____________________________________________________________________
 
-row_1 = ["1", "2", "3"]
-row_2 = ["4", "5", "6"]
-row_3 = ["7", "8", "9"]
+testBoard = ["","x","o","x","o","x","o","x","o","x"]
+display_board(testBoard)
+
+(player1Marker, player2Marker) = player_select_marker()
+print(f"Player 1 is {player1Marker}", f" and Player 2 is {player2Marker}")
 
 gameStatus = True
-
+#
 while gameStatus == True:
-
-    display_information(row_1, row_2, row_3)
-
-    choice1, choice2 = user_Input()
-
-    row_1, row_2, row_3 = replacement_choice(row_1,row_2,row_3, choice1, choice2)
-
-    display_information(row_1, row_2, row_3)
-
+#
+#     display_information(row_1, row_2, row_3)
+#
+#     choice1, choice2 = user_Input()
+#
+#     row_1, row_2, row_3 = replacement_choice(row_1,row_2,row_3, choice1, choice2)
+#
+#     display_information(row_1, row_2, row_3)
+#
     gameStatus = gameON_choice()
