@@ -1,4 +1,5 @@
 from IPython.display import clear_output
+import random
 
 def display_board(board):
     clear_output()
@@ -19,7 +20,7 @@ def player_select_marker():
     player1_marker = ""
     player2_marker = ""
 
-    while marker != "x" and marker != "o":
+    while not (marker == "x" or marker == "o"):
         marker = input("Player 1: Choose option 'x' or 'o' ")
 
         if marker == "x":
@@ -33,6 +34,55 @@ def player_select_marker():
 
 
 # ____________________________________________________________________
+
+def place_marker(board, marker, position):
+
+    board[position] = marker
+
+# ____________________________________________________________________
+
+def win_check(board, mark):
+    if (board[1] ==  board[2] ==  board[3] == mark) or \
+        (board[4] == board[5] == board[6] == mark) or \
+        (board[7] == board[8] == board[9] == mark) or \
+        (board[1] == board[4] == board[7] == mark) or \
+        (board[2] == board[5] == board[8] == mark) or \
+        (board[3] == board[6] == board[9] == mark) or \
+        (board[1] == board[5] == board[9] == mark) or \
+        (board[3] == board[5] == board[7] == mark):
+
+        game_Win_Status = True
+    else:
+        game_Win_Status = False
+
+    return game_Win_Status
+
+# ____________________________________________________________________
+
+def choose_first():
+    flip = random.randint(0,1)
+
+    if flip == 0:
+        return "Player 1 goes first"
+    else:
+        return "Player 2 goes first"
+
+# ____________________________________________________________________
+
+def space_check(board, position):
+    if board[position] == "":
+        return True
+
+# ____________________________________________________________________
+
+def full_board_check(board):
+
+    for i in range(1,10):
+        if space_check(board,i) == "":
+            return False
+    return True
+# ____________________________________________________________________
+
 
 def user_Input():
     # Initialize Variables
@@ -98,11 +148,20 @@ def gameON_choice():
 # ____________________________________________________________________
 # ____________________________________________________________________
 
+choose_first()
+
 testBoard = ["","x","o","x","o","x","o","x","o","x"]
 display_board(testBoard)
 
 (player1Marker, player2Marker) = player_select_marker()
 print(f"Player 1 is {player1Marker}", f" and Player 2 is {player2Marker}")
+
+place_marker(testBoard, '*', 5)
+display_board(testBoard)
+
+gameWinStatus = win_check(testBoard, "x")
+display_board(testBoard)
+print(gameWinStatus)
 
 gameStatus = True
 #
