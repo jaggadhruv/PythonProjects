@@ -1,0 +1,1 @@
+print("This script is exception handling script")

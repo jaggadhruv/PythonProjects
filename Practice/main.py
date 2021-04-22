@@ -10,7 +10,9 @@
 # import polymorphism
 # import specialMethods
 # import OOPPractice1
-from OOPPractice2 import BankAccount
+# from OOPPractice2 import BankAccount
+import exceptionHandling
+
 
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
@@ -23,11 +25,11 @@ if __name__ == '__main__':
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 
-
-my_account1 = BankAccount("Jose", 100)
-print(my_account1)
-
-my_account1.deposit(50)
-my_account1.withdraw(75)
-
-my_account1.withdraw(500)
+# ------------------------------------------------------------
+# my_account1 = BankAccount("Jose", 100)
+# print(my_account1)
+#
+# my_account1.deposit(50)
+# my_account1.withdraw(75)
+#
+# my_account1.withdraw(500)
